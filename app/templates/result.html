@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">Prediction Results</h4>
+                    </div>
+                    {% if error_message %}
+                    <div class="alert alert-danger">
+                        {{ error_message }}
+                    </div>
+                    {% endif %}
+
+                    {% if max_confidence is defined and max_confidence < 0.3 %}
+                    <div class="alert alert-warning">
+                        Low confidence predictions ({{ (max_confidence*100)|round }}%) - try being more specific
+                    </div>
+                    {% endif %}
+
+                    <!-- Your existing results display here -->
+                    <div class="card-body">
+                        <h5>Question:</h5>
+                        <p class="mb-4">{{ question }}</p>
+                        
+                        <h5>Predicted Tags ({{ model_name }}):</h5>
+                        <div class="d-flex gap-2 mb-4">
+                            {% for tag, confidence in tags %}
+                            <span class="badge bg-info text-dark">
+                                {{ tag }} ({{ confidence }}%)
+                            </span>
+                            {% endfor %}
+                        </div>
+                        
+                        <a href="/" class="btn btn-primary">Try Another</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
