@@ -1,6 +1,6 @@
 # ML Tag Prediction 
 
-A FastAPI web service that predicts tags for programming questions using multi-label classification with Naive Bayes.
+This project implements a machine learning system that automatically suggests relevant tags for programming questions, similar to Stack Overflow's tag recommendation system. Using Natural Language Processing (NLP) and multi-label classification techniques, the system analyzes question text and predicts the most appropriate programming language and technology tags.
 
 ## Features
 - Multi-label classification for StackOverflow-style questions
